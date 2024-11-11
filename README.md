@@ -4,31 +4,31 @@ Package to generate PNG summary plots from meshiphi GEOJSON meshes
 ##  
 
 ### Installation
-It is recommended that the py-meshiphi-geojson2png package is installed and used within a Python virtual environment. The Python version must be >= 3.9.x .  
-
-To create a Python virtual environment:  
-```
-python -m venv path_to_new_virtual_env
-```
-  
-Then activate the python virtual environment:  
-```
-source path_to_new_virtual_env/bin/activate
-```  
-
-Once activated, install the py-meshiphi-geojson2png package and it's dependencies into the python virtual environment:  
+Using Python version 3.8.x or higher.
+In a base or virtual python environment:  
 ```
 git clone https://github.com/matscorse/py-meshiphi-geojson2png.git geojson2png
 cd ./geojson2png
 pip install -e .
 ```  
 
-You may wish to create a symbolic link to the virtual python environment for using this package:  
-```
-ln -s <path-to-python-venv>/activate <cloned-directory>/activate
-```
-This way you can easily locate and activate the virtual environment to use this package.
-
 ##  
 
 ### Usage
+Provide 1 or more paths to geojson mesh file(s). The output `.png` file will be created in the same directory as the source mesh file.  
+  
+`geojson2png --help`  
+```bash
+usage: geojson2png [-h] [-x XSCALE] [-y YSCALE] [-d DPI] files [files ...]
+
+Generate PNG summary image(s) from Meshiphi GEOJSON input file(s)
+
+positional arguments:
+  files                             One or more Meshiphi GEOJSON mesh file path(s)
+
+options:
+  -h,           --help             show this help message and exit
+  -x XSCALE,    --xscale XSCALE    WidthScale in inches, default=40
+  -y YSCALE,    --yscale YSCALE    HeightScale in inches, default=30
+  -d DPI,       --dpi DPI          Output resolution DPI, default=180
+```

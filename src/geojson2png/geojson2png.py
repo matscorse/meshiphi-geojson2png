@@ -52,7 +52,7 @@ def main():
     script entry point
     """
     
-    parser = argparse.ArgumentParser(description='Generate PNG summary image from Meshiphi GEOJSON output')
+    parser = argparse.ArgumentParser(description='Generate PNG summary image(s) from Meshiphi GEOJSON input file(s)')
     parser.add_argument("-x", "--xscale", help="WidthScale in inches, default="+str(_XSCALE), action="store", dest='xscale', default=_XSCALE)
     parser.add_argument("-y", "--yscale", help="HeightScale in inches, default="+str(_YSCALE), action="store", dest='yscale', default=_YSCALE)
     parser.add_argument("-d", "--dpi", help="Output resolution DPI, default="+str(_DPI), action="store", dest='dpi', default=_DPI)
