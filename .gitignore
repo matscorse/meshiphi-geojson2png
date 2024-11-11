@@ -163,3 +163,7 @@ cython_debug/
 
 # venv
 /activate
+
+# inputs and outputs
+*.geojson
+*.geojson.png

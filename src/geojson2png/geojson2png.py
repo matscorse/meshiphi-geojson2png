@@ -11,8 +11,8 @@ import os
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-_XSIZE = 40
-_YSIZE = 30
+_XSCALE = 40
+_YSCALE = 30
 _DPI = 180
 
 def check_input_filenames(input_filenames: list):
@@ -24,25 +24,25 @@ def check_input_filenames(input_filenames: list):
 
     for a_filename in input_filenames:
         if not os.path.isfile(a_filename):
-            print("Filename %s is not a file (or doesn't exist): Ignoring", a_filename)
+            print("Filename", a_filename, "is not a file (or doesn't exist): Ignoring")
         else:
             list_of_filenames_that_actually_exist.append(os.path.abspath(a_filename))
-            print("Including filename: %s", a_filename)
+            print("Including filename:", a_filename)
 
     return list_of_filenames_that_actually_exist
 
 
 
-def convert_to_png(geojson_filepath: os.path, xsize, ysize, dpi):
+def convert_to_png(geojson_filepath: os.path, xscale, yscale, dpi):
 
     df = gpd.read_file(geojson_filepath)
     bounds = df.geometry.total_bounds
-    fig, ax = plt.subplots(figsize = (xsize, ysize))
-    
+    fig, ax = plt.subplots(figsize = (xscale, yscale))
+
     df.to_crs(epsg=4326).plot(column='SIC', ax=ax, edgecolor='grey', linewidth=0.5, cmap = 'coolwarm')
     df.to_crs(epsg=4326).plot(column='land', ax=ax, edgecolor='brown', linewidth=0.5, cmap = 'copper')
 
-    plt.savefig(os.path.join(geojson_filepath, '.png'), dpi=dpi)
+    plt.savefig(geojson_filepath+'.png', dpi=dpi)
 
     return
 
@@ -53,9 +53,9 @@ def main():
     """
     
     parser = argparse.ArgumentParser(description='Generate PNG summary image from Meshiphi GEOJSON output')
-    parser.add_argument("-w", "--widthscale", help="WidthScale in inches", action="store", dest='xsize', default=_XSIZE)
-    parser.add_argument("-h", "--heightscale", help="HeightScale in inches", action="store", dest='ysize', default=_YSIZE)
-    parser.add_argument("-d", "--dpi", help="Output resolution DPI", action="store", dest='dpi', default=_DPI)
+    parser.add_argument("-x", "--xscale", help="WidthScale in inches, default="+str(_XSCALE), action="store", dest='xscale', default=_XSCALE)
+    parser.add_argument("-y", "--yscale", help="HeightScale in inches, default="+str(_YSCALE), action="store", dest='yscale', default=_YSCALE)
+    parser.add_argument("-d", "--dpi", help="Output resolution DPI, default="+str(_DPI), action="store", dest='dpi', default=_DPI)
     parser.add_argument("files", help="One or more Meshiphi GEOJSON mesh file path(s)", type=str, nargs='+')
     args = parser.parse_args()
 
@@ -65,7 +65,7 @@ def main():
     checked_files = check_input_filenames(args.files)
 
     for geojson_filepath in checked_files:
-        convert_to_png(geojson_filepath, args.xsize, args.ysize, args.dpi)
+        convert_to_png(geojson_filepath, args.xscale, args.yscale, args.dpi)
 
 
 
