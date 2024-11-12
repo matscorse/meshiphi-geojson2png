@@ -4,8 +4,14 @@ Package to generate PNG summary plots from meshiphi GEOJSON meshes
 ##  
 
 ### Installation
-Using Python version 3.8.x or higher.
-In a base or virtual python environment:  
+Using Python version 3.8.x or higher.  
+  
+To simply install for out-of-the-box use in a base or virtual Python environment:
+```
+pip install py-meshiphi-geojson2png@git+https://github.com/matscorse/py-meshiphi-geojson2png.git
+```
+Or...  
+For an editable install in a base or virtual python environment:  
 ```
 git clone https://github.com/matscorse/py-meshiphi-geojson2png.git geojson2png
 cd ./geojson2png
