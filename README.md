@@ -25,16 +25,21 @@ Provide 1 or more paths to geojson mesh file(s). The output `.png` file will be 
   
 `geojson2png --help`  
 ```bash
-usage: geojson2png [-h] [-x XSCALE] [-y YSCALE] [-d DPI] files [files ...]
+usage: geojson2png [-h] [-x XSCALE] [-y YSCALE] [-d DPI] [-p] [-c CRITERIA] files [files ...]
 
 Generate PNG summary image(s) from Meshiphi GEOJSON input file(s)
 
 positional arguments:
-  files                             One or more Meshiphi GEOJSON mesh file path(s)
+  files                 One or more Meshiphi GEOJSON mesh file path(s)
 
 options:
-  -h,           --help             show this help message and exit
-  -x XSCALE,    --xscale XSCALE    WidthScale in inches, default=40
-  -y YSCALE,    --yscale YSCALE    HeightScale in inches, default=30
-  -d DPI,       --dpi DPI          Output resolution DPI, default=180
+  -h, --help            show this help message and exit
+  -x XSCALE, --xscale XSCALE
+                        WidthScale in inches, default=40
+  -y YSCALE, --yscale YSCALE
+                        HeightScale in inches, default=30
+  -d DPI, --dpi DPI     Output resolution DPI, default=180
+  -p, --palette_amsr    Use the AMSR2 colormap palette instead of the default
+  -c CRITERIA, --criteria CRITERIA
+                        Use alternate colourmap criteria, instead of default SIC
 ```
