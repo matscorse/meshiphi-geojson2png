@@ -7,7 +7,7 @@ def get_content(filename):
 setuptools.setup(
   include_package_data=True,
   name='py-meshiphi-geojson2png',
-  version='0.0.1',
+  version='0.1.0',
   description='meshiphi geojson to PNG python package',
   author='matscorse',
   author_email='matsco@bas.ac.uk',
